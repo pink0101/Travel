@@ -10,8 +10,8 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/api': {
+    proxyTable: {// 给接口进行转发
+      '/api': { // 当访问/api 时自动到 下面的端口  然后并将/api  转换成 /static/mock
         target: 'http://localhost:3385',
         pathRewrite: {
           '^/api': '/static/mock'

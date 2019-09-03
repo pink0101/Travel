@@ -1,12 +1,12 @@
 <template>
     <div class="icons">
-        <swiper>
+        <swiper :options="swiperOption">
             <swiper-slide v-for="(page, index) in pages" :key="index">
             <div class="icon" v-for="item in page" :key="item.id">
             <div class="icon-img">
                 <img class="icon-img-content" :src="item.imgUrl" alt="">
             </div>
-            <p class="icon-desc">{{ item.text }}</p>
+            <p class="icon-desc">{{ item.desc }}</p>
             </div>
             </swiper-slide>
         </swiper>
@@ -16,61 +16,20 @@
 <script>
     export default {
         name: "Icons",
-        data () {
+        props: {
+          icons: Array
+        },
+        data(){
             return {
-                iconList: [
-                    {
-                        id: '001',
-                        imgUrl: 'https://s.qunarzz.com/vacation_react/around/entry2_2.png',
-                        text: '一日游'
-                    },
-                    {
-                        id: '002',
-                        imgUrl: 'https://s.qunarzz.com/vacation_react/around/entry3.png',
-                        text: '自驾游'
-                    },
-                    {
-                        id: '003',
-                        imgUrl: 'https://s.qunarzz.com/vacation_react/around/entry5.png',
-                        text: '跟团游'
-                    },
-                    {
-                        id: '004',
-                        imgUrl: 'https://s.qunarzz.com/vacation_react/around/entry4.png',
-                        text: '景点门票'
-                    },
-                    {
-                        id: '005',
-                        imgUrl: 'https://s.qunarzz.com/vacation_react/around/entry1.png',
-                        text: '景点+酒'
-                    },
-                    {
-                        id: '006',
-                        imgUrl: 'https://s.qunarzz.com/vacation_react/around/entry3.png',
-                        text: '酷玩体验'
-                    },
-                    {
-                        id: '007',
-                        imgUrl: 'https://s.qunarzz.com/vacation_react/around/entry3.png',
-                        text: '酷玩体验'
-                    },
-                    {
-                        id: '008',
-                        imgUrl: 'https://s.qunarzz.com/vacation_react/around/entry3.png',
-                        text: '酷玩体验'
-                    },
-                    {
-                        id: '009',
-                        imgUrl: 'https://s.qunarzz.com/vacation_react/around/entry3.png',
-                        text: '酷玩体验'
-                    }
-                ]
+                swiperOption: {
+                    autoplay: false
+                }
             }
         },
         computed: {
             pages() {
                 const pages = []
-                this.iconList.forEach((item, index) => {
+                this.icons.forEach((item, index) => {
                     let page = Math.floor(index / 8)
                     if (!pages[page]) {
                         pages[page] = []

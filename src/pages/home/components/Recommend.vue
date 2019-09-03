@@ -2,7 +2,7 @@
     <div>
         <div class="recommend-title">热销推荐</div>
         <ul>
-            <li class="item border-bottom" v-for="(item, index) in recommendList" :key="index">
+            <li class="item border-bottom" v-for="(item, index) in recommend" :key="index">
                 <img :src="item.imgUrl" class="item-img" alt="">
                 <div class="item-info">
                     <p class="item-title">{{ item.title }}</p>
@@ -17,41 +17,8 @@
 <script>
     export default {
         name: "Recommend",
-        data() {
-            return {
-                recommendList: [
-                    {
-                        id: '0001',
-                        imgUrl: 'https://img1.qunarzz.com/p/tts0/1810/be/7d60731db9f5dd02.jpg_r_640x420x90_c2c3357b.jpg',
-                        title: '北京自由行',
-                        desc: '自由行 【中秋国庆】北京跟拍儿童摄影旅拍亲子情侣闺蜜个人写真摄影'
-                    },
-                    {
-                        id: '0002',
-                        imgUrl: 'https://img1.qunarzz.com/vs_ceph_vs_tts/c07950a2-9754-4ecd-8385-14fc4fabe9d7.jpg_r_640x420x90_242b9660.jpg',
-                        title: '北京自由行',
-                        desc: '自由行 【中秋国庆】北京跟拍儿童摄影旅拍亲子情侣闺蜜个人写真摄影'
-                    },
-                    {
-                        id: '0003',
-                        imgUrl: 'https://img1.qunarzz.com/vs_ceph_vs_tts/f5c0abe9-9315-4d0a-a67e-942db7702c64.jpg_r_640x420x90_057de7ad.jpg',
-                        title: '北京自由行',
-                        desc: '自由行 【中秋国庆】北京跟拍儿童摄影旅拍亲子情侣闺蜜个人写真摄影'
-                    },
-                    {
-                        id: '0004',
-                        imgUrl: 'https://img1.qunarzz.com/p/tts0/1810/be/7d60731db9f5dd02.jpg_r_640x420x90_c2c3357b.jpg',
-                        title: '北京自由行',
-                        desc: '自由行 【中秋国庆】北京跟拍儿童摄影旅拍亲子情侣闺蜜个人写真摄影'
-                    },
-                    {
-                        id: '0005',
-                        imgUrl: 'https://img1.qunarzz.com/p/tts0/1810/be/7d60731db9f5dd02.jpg_r_640x420x90_c2c3357b.jpg',
-                        title: '北京自由行',
-                        desc: '自由行 【中秋国庆】北京跟拍儿童摄影旅拍亲子情侣闺蜜个人写真摄影'
-                    }
-                ]
-            }
+        props: {
+            recommend: Array
         }
     }
 </script>
@@ -86,7 +53,7 @@
                 ellipsis()
             .item-button
                 background:#ff9300
-                padding:0 1rem
+                padding:0 .3rem
                 border-radius:.09rem
                 margin-top:.2rem
                 color: #fff
