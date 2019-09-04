@@ -1,15 +1,15 @@
 <template>
     <ul class="list">
-        <li class="item">A</li>
-        <li class="item">A</li>
-        <li class="item">A</li>
-        <li class="item">A</li>
+        <li class="item" v-for="(item,index) in cities" :key="index">{{ index }}</li>
     </ul>
 </template>
 
 <script>
     export default {
-        name: "CityAlphabet"
+        name: "CityAlphabet",
+        props: {
+            cities: Object
+        }
     }
 </script>
 
@@ -20,7 +20,7 @@
         flex-direction:column /* 设置主轴为垂直方向 */
         justify-content:center/* 在主轴上居中 */
         position:absolute
-        top:0
+        top:1.58rem
         right:0
         bottom:0
         width:.4rem
