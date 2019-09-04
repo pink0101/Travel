@@ -19,7 +19,7 @@
         props: {
           icons: Array
         },
-        data(){
+        data() {
             return {
                 swiperOption: {
                     autoplay: false
