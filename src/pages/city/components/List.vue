@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="area" v-for="(item,index) in cities" :key="index">
+            <div class="area" v-for="(item,index) in cities" :key="index" :ref="index">  <!-- 如果通过v-for 遍历想加不同的ref时记得加 :号，即 :ref =某变量 ; -->
                 <div class="title border-topbottom">{{ index }}</div>
                 <div class="item-list">
                     <div class="item border-bottom" v-for="innerItem in item" :key="innerItem.id">{{ innerItem.name }}</div>
@@ -33,10 +33,19 @@
         name: "List",
         props: {
             cities: Object,
-            hotCities: Array
+            hotCities: Array,
+            letter: String
         },
         mounted() {
-            this.scroll = new Bscroll(this.$refs.wrapper)
+            this.scroll = new Bscroll(this.$refs.wrapper) // Bscroll 的配置
+        },
+        watch: {
+            letter () {
+                if (this.letter) {
+                    const element = this.$refs[this.letter][0]
+                    this.scroll.scrollToElement(element) // Bscroll 提供了让点右侧某个元素，自动跳的方法
+                }
+            }
         }
     }
 </script>
