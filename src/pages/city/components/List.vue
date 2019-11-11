@@ -1,22 +1,25 @@
 <template>
     <div class="list" ref="wrapper">
         <div>
+            <!-- 当前城市 -->
             <div class="area">
                 <div class="title border-topbottom">当前城市</div>
                 <div class="button-list">
                     <div class="button-wrapper">
-                        <div class="buttom">北京</div>
+                        <div class="buttom">{{ this.$store.state.city }}</div>
                     </div>
                 </div>
             </div>
+            <!-- 热门城市 -->
             <div class="area">
                 <div class="title border-topbottom">热门城市</div>
                 <div class="button-list">
-                    <div class="button-wrapper" v-for="item in hotCities" :key="item.id">
+                    <div class="button-wrapper" v-for="item in hotCities" :key="item.id" @touchstart="handleCityClick(item.name)">
                         <div class="buttom">{{ item.name }}</div>
                     </div>
                 </div>
             </div>
+            <!-- 所有的城市列表 -->
             <div class="area" v-for="(item,index) in cities" :key="index" :ref="index">  <!-- 如果通过v-for 遍历想加不同的ref时记得加 :号，即 :ref =某变量 ; -->
                 <div class="title border-topbottom">{{ index }}</div>
                 <div class="item-list">
@@ -28,16 +31,23 @@
 </template>
 
 <script>
+    // 引入 Bscroll
     import Bscroll from 'better-scroll'
     export default {
-        name: "List",
+        name: "CityList",
         props: {
             cities: Object,
             hotCities: Array,
             letter: String
         },
-        mounted() {
-            this.scroll = new Bscroll(this.$refs.wrapper) // Bscroll 的配置
+        methods: {
+            handleCityClick (city) {
+                this.$store.dispatch('changeCity', city)
+            }
+        },
+        mounted() { // mounted() 生命周期函数，在页面DOM挂载完毕之后执行
+            // 创建一个Bscroll 的实例
+            this.scroll = new Bscroll(this.$refs.wrapper) // Bscroll 的配置  this.$refs.wrapper 获取到 list 这个容器
         },
         watch: {
             letter () {
@@ -51,6 +61,7 @@
 </script>
 
 <style lang="stylus" scoped>
+    /* 字符 & 指向父选择器 */
     .border-topbottom
         &:before
             border-color:#ccc
