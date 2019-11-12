@@ -19,8 +19,8 @@
         data () {
             return {
                 swiperOption: {
-                    pagination: '.swiper-pagination',
-                    loop: true
+                    pagination: '.swiper-pagination', // 配置轮播图的焦点
+                    loop: true // 使用该轮播插件支持循环轮播
                 }
             }
         },
@@ -33,6 +33,7 @@
 </script>
 
 <style lang="stylus" scoped>
+    /* 这里样式我们使用了  scoped  作用  下面的样式只对本组件的样式生效   但是这里我们又需要  对 swiper 轮播的焦点颜色进行修改 所以使用  >>>  对样式进行穿透 */
     .wrapper >>> .swiper-pagination-bullet-active
         background: #fff !important
     .wrapper
