@@ -14,7 +14,7 @@
     export default {
         name: "HomeSwiper",
         props: {
-            swiper: Array // 父组件传递过来的参数
+            swiper: Array
         },
         data () {
             return {
@@ -27,27 +27,9 @@
         computed: {
             showSwiper () {
                 return this.swiper.length
-                },
-                swiperList: [
-                    {
-                        id: '001',
-                        imgUrl: 'https://source.qunarzz.com/site/images/wns/20190827_dujia_homepage_750x192_2.jpg'
-                    },
-                    {
-                        id: '002',
-                        imgUrl: 'https://source.qunarzz.com/site/images/wns/20190826_qunar_dujia_750x192_3.jpg'
-                    },
-                    {
-                        id: '003',
-                        imgUrl: 'https://source.qunarzz.com/site/images/wns/20190801_qunar_dujia_750x192_6_V1.jpg'
-                    },
-                    {
-                        id: '004',
-                        imgUrl: 'https://source.qunarzz.com/site/images/wns/20190809_dujia_homepage_top_banner_5.jpg'
-                    }
-                ]
             }
         }
+    }
 </script>
 
 <style lang="stylus" scoped>
@@ -61,6 +43,6 @@
         padding-bottom:31%
         background:#eee
         .swiper-img
-            width:100%
+            width: 100%
 
 </style>
