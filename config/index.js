@@ -7,13 +7,13 @@ const path = require('path')
 module.exports = {
   dev: {
 
-    // Paths
+    // Paths  由 webpack-dev-server 提供该功能
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {// 给接口进行转发
-      '/api': { // 当访问/api 时自动到 下面的端口  然后并将/api  转换成 /static/mock
+    proxyTable: {// 给接口进行转发使用
+      '/api': { // 当访问路径以 /api 开头时自动匹配到 下面的地址和端口
         target: 'http://localhost:3385',
-        pathRewrite: {
+        pathRewrite: { // 发现路径以 /api 开头时 转换成 /static/mock
           '^/api': '/static/mock'
         }
       }
