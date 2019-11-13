@@ -14,7 +14,7 @@
     export default {
         name: "HomeSwiper",
         props: {
-            swiper: Array
+            swiper: Array // 父组件传递过来的参数
         },
         data () {
             return {
