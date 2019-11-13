@@ -34,9 +34,10 @@
                 weekend: []
             }
         },
-        methods: {
+        methods: { // vue中的方法定义在 methods中
             getHomeInfo() {
-                axios.get('/api/index.json')
+                // axios 返回结果是一个promise对象 所以这里使用 .then 接收
+                axios.get('/api/index.json') // 这里的接口采用了 接口转发机制  配置见 config/index.js proxyTable 对象
                     .then(this.getHomeInfoSucc)
             },
             getHomeInfoSucc(res) {
@@ -51,7 +52,7 @@
                 }
             }
         },
-        mounted() {
+        mounted() { // 生命周期函数 vue页面挂载之后 自动执行该函数
             this.getHomeInfo()
         }
     }
