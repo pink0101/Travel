@@ -7,7 +7,7 @@
             <span class="iconfont">&#xe632;</span>
             输入城市/景点/游玩主题</div>
         <router-link to="/city">
-        <div class="header-right">{{ this.$store.state.city }} <!-- 这里的数据是 vuex 的 -->
+        <div class="header-right">{{ this.city }} <!-- this.$store.state.city  这里的数据是 vuex 的 -->
         <span class="iconfont arrow-icon">&#xe64a;</span>
         </div>
         </router-link>
@@ -15,10 +15,11 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     export default {
         name: "Header",
-        props: {
-            city: String
+        computed: {
+            ...mapState(['city']) // 这里使用vuex 提供的mapState api vuex的数据映射到city上
         }
     }
 </script>
@@ -50,7 +51,8 @@
             line-height: .62rem
             padding-left: .2rem
         .header-right
-            width: 1.24rem
+            min-width: 1.04rem
+            padding: 0.1rem
             float: right
             text-align: center
             color:#fff
