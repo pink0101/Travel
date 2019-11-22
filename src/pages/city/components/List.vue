@@ -1,5 +1,5 @@
 <template>
-    <div class="list" ref="wrapper">
+    <div class="list" ref="wrapper"> <!--ref 帮助我们获取 list div 这个dom-->
         <div>
             <div class="area">
                 <div class="title border-topbottom">当前城市</div>
@@ -70,10 +70,10 @@
 </template>
 
 <script>
-    import Bscroll from 'better-scroll'
+    import Bscroll from 'better-scroll' /* 实现区域滚动的的库 */
     export default {
         name: "List",
-        mounted() {
+        mounted() { // 在dom挂载后执行
             this.scroll = new Bscroll(this.$refs.wrapper)
         }
     }
@@ -86,7 +86,7 @@
         &:after
             border-color:#ccc
     .border-bottom
-    &:before
+        &:before
             border-color:#ccc
     .list
         overflow:hidden
