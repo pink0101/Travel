@@ -24,7 +24,7 @@
                 }
             }
         },
-        computed: {
+        computed: { // º∆À„ Ù–‘
             showSwiper () {
                 return this.swiper.length
             }

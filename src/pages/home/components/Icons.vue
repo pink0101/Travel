@@ -2,12 +2,12 @@
     <div class="icons">
         <swiper :options="swiperOption">
             <swiper-slide v-for="(page, index) in pages" :key="index">
-            <div class="icon" v-for="item in page" :key="item.id">
-            <div class="icon-img">
-                <img class="icon-img-content" :src="item.imgUrl" alt="">
-            </div>
-            <p class="icon-desc">{{ item.desc }}</p>
-            </div>
+                <div class="icon" v-for="item in page" :key="item.id">
+                    <div class="icon-img">
+                        <img class="icon-img-content" :src="item.imgUrl" alt="">
+                    </div>
+                    <p class="icon-desc">{{ item.desc }}</p>
+                </div>
             </swiper-slide>
         </swiper>
     </div>
@@ -30,7 +30,7 @@
             pages() {
                 const pages = []
                 this.icons.forEach((item, index) => {
-                    let page = Math.floor(index / 8)
+                    let page = Math.floor(index / 8) // floor返回最大整数
                     if (!pages[page]) {
                         pages[page] = []
                     }
