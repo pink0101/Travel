@@ -3,7 +3,7 @@
         <city-header></city-header>
         <city-search></city-search>
         <city-list :cities="cities" :hotCities="hotCities" :letter="letter" ></city-list>
-        <city-alphabet :cities="cities" @change="handleLetterChange"></city-alphabet>
+        <city-alphabet :cities="cities" @change="handleLetterChange"></city-alphabet> <!-- 监听change事件 -->
     </div>
 </template>
 
@@ -41,7 +41,7 @@
                     this.hotCities = res.data.hotCities
                 }
             },
-            handleLetterChange(letter) {
+            handleLetterChange(letter) { // 接收到Alphabet.vue 子组件传递过来的值
                 this.letter = letter
             }
         },

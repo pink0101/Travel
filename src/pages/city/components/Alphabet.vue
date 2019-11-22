@@ -19,11 +19,11 @@
             return {
                 touchStatus: false, // 触摸节流阀
                 startY: 0, // 初始化A字母距离顶部的值
-                timer: null // 节流阀
+                timer: null // 滑动节流阀
             }
         },
         computed: {
-          letters() {
+          letters() { // cities 是一个对象 但是后面需要计算滚动了多少，这里将遍历对象存成一个数组 方便下面进行计算
               const letters = []
               for (let i in this.cities) {
                   letters.push(i)
@@ -31,12 +31,12 @@
               return letters
           }
         },
-        updated() { // 只有事先设置好的data变量如下arrData改变并且要在页面重新渲染{{ arrData }}完成之后,才会进updated方法
+        updated() { // 生命周期钩子 当页面数据被更新的时候同时页面完成了自己的渲染之后 就会执行
             this.startY = this.$refs['A'][0].offsetTop // A 位置距离顶部的高度
         },
         methods: {
             handleLetterClick(e) {
-                this.$emit('change', e.target.innerHTML) /* 向外触发一个change 事件，并传值 */
+                this.$emit('change', e.target.innerHTML) /* 向外触发一个change 事件，并传值 父组件City.vue 进行监听 */
             },
             handleTouchStart() {
                 this.touchStatus = true
@@ -46,9 +46,9 @@
                     if (this.timer) {
                         clearInterval(this.timer)
                     }
-                    setTimeout(() => {
-                        const touchY = e.touches[0].clientY - 79 // 手指距离顶部高度
-                        const index = Math.floor((touchY - this.startY) / 21.6)
+                    this.timer = setTimeout(() => {
+                        const touchY = e.touches[0].clientY - 79 // 手指距离顶部的值=手指距离最顶部的值-顶部绿色去的值
+                        const index = Math.floor((touchY - this.startY) / 21.6) // 字母序号的值=（手指距离顶部的值-A字母距离顶部的值）/每个字母的高度
                         if (index >= 0 && index < this.letters.length) {
                             this.$emit('change', this.letters[index]) /* 向外触发一个change 事件，并传值 */
                         }

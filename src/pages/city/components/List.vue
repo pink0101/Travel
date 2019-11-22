@@ -37,9 +37,9 @@
             letter: String
         },
         mounted() {
-            this.scroll = new Bscroll(this.$refs.wrapper) // Bscroll 的配置
+            this.scroll = new Bscroll(this.$refs.wrapper) // Bscroll 的配置初始化
         },
-        watch: {
+        watch: { // 监听器 当监听的数据发生变化，进行调用
             letter () {
                 if (this.letter) {
                     const element = this.$refs[this.letter][0]
