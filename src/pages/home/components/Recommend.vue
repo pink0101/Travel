@@ -2,14 +2,16 @@
     <div>
         <div class="recommend-title">热销推荐</div>
         <ul>
-            <li class="item border-bottom" v-for="(item, index) in recommend" :key="index">
-                <img :src="item.imgUrl" class="item-img" alt="">
-                <div class="item-info">
-                    <p class="item-title">{{ item.title }}</p>
-                    <p class="item-desc">{{ item.desc }}</p>
-                    <button class="item-button">查看详情</button>
-                </div>
-            </li>
+            <!-- router-link 会被解析为一个 a 标签  这里我们将 li 标签直接换成 router-link 然后 使用 tag 属性 解析为 li -->
+            <router-link tag="li" :to="'/detail/' + item.id"
+                 class="item border-bottom" v-for="(item, index) in recommend" :key="index">
+                    <img :src="item.imgUrl" class="item-img" alt="">
+                    <div class="item-info">
+                        <p class="item-title">{{ item.title }}</p>
+                        <p class="item-desc">{{ item.desc }}</p>
+                        <button class="item-button">查看详情</button>
+                    </div>
+            </router-link>
         </ul>
     </div>
 </template>

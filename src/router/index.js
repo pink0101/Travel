@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages/home/Home.vue'
 import City from '@/pages/city/City'
-// import Detail from '@/pages/detail/Detail'
+import Detail from '@/pages/detail/Detail'
 // 这里的 @  只的是src这个目录
 
 Vue.use(Router)
@@ -18,6 +18,11 @@ export default new Router({
       path: '/city',
       name: 'city',
       component: City
+    },
+    {
+      path: '/detail/:id', /* 动态路由 开头为 /detail/ 冒号后面参数 会放到id里面 */
+      name: 'detail',
+      component: Detail
     }
   ]
 })
