@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="banner" @click="handleBannerClick">
-            <img class="banner-img" src="https://img1.qunarzz.com/vs_ceph_vs_tts/beab3bf2-2869-4e48-98ce-130b2e027994.jpg_r_640x420x90_0f2072ba.jpg" />
+            <img class="banner-img" src="https://img1.qunarzz.com/vs_ceph_vs_tts/3f346f87-5cfe-4196-9028-215291ea103f.png_r_640x420x90_f99cc75f.png" />
             <div class="banner-info">
                 <div class="banner-title">西安出发-跟团游 </div>
                 <div class="banner-number"><span class="iconfont banner-icon">&#xe632;</span>39</div>
