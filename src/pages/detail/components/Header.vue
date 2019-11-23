@@ -26,7 +26,7 @@
         methods: {
             handleScroll() {
                 const top = document.documentElement.scrollTop
-                if (top > 60 ) {
+                if (top > 60) {
                     let opacity = top / 140
                     opacity = opacity > 1 ? 1 : opacity
                     this.opacityStyle = { opacity }
@@ -37,7 +37,10 @@
             }
         },
         activated() { // 因为我们在App.vue 使用keep-alive 所以这里 activated 钩子 页面一展示，机会执行
-            window.addEventListener('scroll', this.handleScroll) // 一旦scroll 事件被执行，handleScroll 方法会被执行
+            window.addEventListener('scroll', this.handleScroll) // 一旦scroll 事件被执行，handleScroll 方法会被执行 这里注册在window上的全局事件，所有页面都会执行，造成页面性能降低
+        },
+        deactivated() { // 因为有activated 钩子 ，这里又有了就 deactivated 钩子函数 作用 当前离开当前页面就执行
+            window.removeEventListener('scroll', this.handleScroll) // 对全局事件进行一个解绑
         }
     }
 </script>
