@@ -16,6 +16,8 @@ import 'styles/border.css'
 import 'styles/iconfont.css'
 // 要使用vue-awesome-swiper 插件 还要引入swiper.css
 import 'swiper/dist/css/swiper.css'
+// 支持promise  有的浏览器不支持 就安装这个包
+import 'babel-polyfill'
 
 // 为false时会不显示生产模式的消息
 Vue.config.productionTip = false

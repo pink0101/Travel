@@ -1,5 +1,5 @@
-let defaultCity = 'Î÷°²'
-try { // Èç¹û try ÖĞÓï¾ä·¢Éú´íÎó ÔòÖ´ĞĞ catchÖĞÓï¾ä
+let defaultCity = 'è¥¿å®‰'
+try { // å¦‚æœ try ä¸­è¯­å¥å‘ç”Ÿé”™è¯¯ åˆ™æ‰§è¡Œ catchä¸­è¯­å¥
     if (localStorage.city) {
         defaultCity = localStorage.city
     }

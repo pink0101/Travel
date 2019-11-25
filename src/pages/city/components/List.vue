@@ -14,7 +14,7 @@
             <div class="area">
                 <div class="title border-topbottom">热门城市</div>
                 <div class="button-list">
-                    <div class="button-wrapper" v-for="item in hotCities" :key="item.id" @touchstart="handleCityClick(item.name)">
+                    <div class="button-wrapper" v-for="item in hotCities" :key="item.id" @click="handleCityClick(item.name)">
                         <div class="buttom">{{ item.name }}</div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
             <div class="area" v-for="(item,index) in cities" :key="index" :ref="index">  <!-- 如果通过v-for 遍历想加不同的ref时记得加 :号，即 :ref =某变量 ; -->
                 <div class="title border-topbottom">{{ index }}</div>
                 <div class="item-list">
-                    <div class="item border-bottom" v-for="innerItem in item" :key="innerItem.id" @touchstart="handleCityClick(innerItem.name)">{{ innerItem.name }}</div>
+                    <div class="item border-bottom" v-for="innerItem in item" :key="innerItem.id" @click="handleCityClick(innerItem.name)">{{ innerItem.name }}</div>
                 </div>
             </div>
         </div>
@@ -52,8 +52,12 @@
             ...mapMutations(['changeCity']) // 高级写法
         },
         mounted() { // mounted() 生命周期函数，在页面DOM挂载完毕之后执行
+            const options = {
+                click: true,
+                tap: true
+            }
             // 创建一个Bscroll 的实例
-            this.scroll = new Bscroll(this.$refs.wrapper) // Bscroll 的配置  this.$refs.wrapper 获取到 list 这个容器
+            this.scroll = new Bscroll(this.$refs.wrapper, options) // Bscroll 的配置  this.$refs.wrapper 获取到 list 这个容器
         },
         watch: {
             letter () {
