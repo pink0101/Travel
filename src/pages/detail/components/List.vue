@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div class="item" v-for="(item, index) in list" :key="index">
+        <div class="item" v-for="(item, index) in categoryList" :key="index">
             <div class="item-title border-bottom">
                 <span class="item-title-icon"></span>
                 {{ item.title }}
             </div>
             <div v-if="item.children" class="item-children"><!-- 这里判断一级标题里面是否还有数据  -->
-                <detail-list :list="item.children"></detail-list> <!-- 这里是递归组件 调用自己  -->
+                <detail-list :categoryList="item.children"></detail-list> <!-- 这里是递归组件 调用自己  -->
             </div>
         </div>
     </div>
@@ -16,7 +16,7 @@
     export default {
         name: "DetailList",
         props: {
-            list: Array
+            categoryList: Array
         }
     }
 </script>

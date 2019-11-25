@@ -24,5 +24,8 @@ export default new Router({
       name: 'detail',
       component: Detail
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) { // 每次切换路由，新的页面都展示为x为0 y为0
+    return { x: 0, y: 0 }
+  }
 })
